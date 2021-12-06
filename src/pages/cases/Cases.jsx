@@ -4,12 +4,16 @@ import { Heading, Spinner, Stack, Flex, VStack } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 import { useState } from 'react';
 import SearchInput from '@/pages/cases/layout/SearchInput';
+import axios from 'axios';
 
 const Cases = () => {
   const { data, isLoading, isError } = useQuery('cases', async () => {
-    // const response = await axios.get(process.env.REACT_APP_API);
+    const dateUrl = `${process.env.REACT_APP_API}?&$select=max(submission_date)`;
+    const dateResponse = (await axios.get(dateUrl)).data;
 
-    const data = DATA;
+    const url = `${process.env.REACT_APP_API}?&$select=submission_date,case(conf_cases is null,0,conf_cases is not null, conf_cases) as conf_cases,state&$where=submission_date == ("${dateResponse[0].max_submission_date}")`;
+
+    const data = (await axios.get(url)).data;
 
     let totalCases = data.reduce((acc, item) => {
       const cases = Number(item.conf_cases);
@@ -18,12 +22,12 @@ const Cases = () => {
     totalCases = Math.round(totalCases);
 
     const finalData = data.map((item) => {
-      const newItem = {};
-      newItem.percent = ((item.conf_cases / totalCases) * 100).toFixed(2);
-      newItem.date = new Date(item.submission_date).toLocaleDateString('en-US');
-      newItem.state = item.state;
-      newItem.cases = Math.round(item.conf_cases);
-      return newItem;
+      return {
+        percent: ((item.conf_cases / totalCases) * 100).toFixed(2),
+        date: new Date(item.submission_date).toLocaleDateString('en-US'),
+        state: item.state,
+        cases: Math.round(item.conf_cases),
+      };
     });
 
     return finalData;
