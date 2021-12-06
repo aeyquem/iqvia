@@ -67,7 +67,7 @@ const Cases = () => {
   };
 
   return (
-    <VStack m='5'>
+    <VStack mx='5'>
       <SearchInput value={state} onChange={changeStateHandler} />
       <CasesTable data={filteredData} />
     </VStack>

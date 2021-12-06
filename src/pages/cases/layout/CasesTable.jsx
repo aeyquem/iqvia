@@ -13,7 +13,7 @@ const CasesTable = (props) => {
 
   return (
     <>
-      <Table variant='striped' colorScheme='green' size='lg'>
+      <Table variant='striped' colorScheme='green' size='sm' maxW='500px'>
         <TableCaption>Covid confirmed cases per state</TableCaption>
         <Thead>
           <Tr>
