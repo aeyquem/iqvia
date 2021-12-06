@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { DATA } from '@/data/data';
 import CasesTable from '@/pages/cases/layout/CasesTable';
 import { Heading, Spinner, Stack, Flex, VStack } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
