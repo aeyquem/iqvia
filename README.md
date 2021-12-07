@@ -7,3 +7,5 @@ Could you display US state-level confirmed COVID-19 case counts in a table order
   - Calculated as a percentage of state confirmed cases out of the entire United States
 
 This page also needs to include a state filter so a user can easily filter the results by a certain state.
+
+![image](https://user-images.githubusercontent.com/50872250/144972602-c84466ce-bd74-46c7-b5ce-b83691d6f9f3.png)
