@@ -9,4 +9,5 @@ Could you display US state-level confirmed COVID-19 case counts in a table order
 This page also needs to include a state filter so a user can easily filter the results by a certain state.
 
 # image
-![image](https://user-images.githubusercontent.com/50872250/144972602-c84466ce-bd74-46c7-b5ce-b83691d6f9f3.png)
+![image](https://user-images.githubusercontent.com/50872250/144975873-075318dd-d544-4dbf-a6c4-cf2fe6a66181.png)
+
