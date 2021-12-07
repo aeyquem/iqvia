@@ -23,11 +23,17 @@ const Cases = () => {
 
     const finalData = data.map((item) => {
       return {
-        percent: ((item.conf_cases / totalCases) * 100).toFixed(2),
+        percent: (item.conf_cases / totalCases) * 100,
         date: new Date(item.submission_date).toLocaleDateString('en-US'),
         state: item.state,
         cases: Math.round(item.conf_cases),
       };
+    });
+
+    finalData.sort((a, b) => b.percent - a.percent);
+
+    finalData.forEach((item) => {
+      item.percent = item.percent.toFixed(2);
     });
 
     return finalData;
